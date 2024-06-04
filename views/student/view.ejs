@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>View Submissions</title>
+    <style>
+        table tr:nth-child(even) {
+            background-color: transparent;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <% include ../partial/sideNav.ejs %>
+        <section id="content">
+            <div id="header">
+                <div class="nav">
+                    <div class="profile">
+                        <img style="border-radius: 50%;" src=<%=profile%> height="30px" width="30px"><i
+                            class="fa fa-caret-down"></i>
+                    </div>
+                </div>
+                </li>
+                </ul>
+            </div>
+            </div>
+            <div class="content">
+                <div class="content-header">
+                    <p class="welcome">Welome <strong>
+                            <%=user%>
+                        </strong></p>
+                </div>
+
+                <div class="flex-container">
+                    <table class="table table-hover" style="overflow:scroll;
+                white-space: nowrap;">
+                        <thead>
+                            <tr>
+                                <th scope="col">On duty-Id</th>
+                                <th scope="col">Event Type</th>
+                                <th scope="col">Event Details</th>
+                                <th scope="col">Certificate Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table">
+
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+        </section>
+
+
+
+        <script src="/cert.js"></script>
+</body>
+
+</html>

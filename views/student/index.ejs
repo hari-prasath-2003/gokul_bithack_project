@@ -1,0 +1,94 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <% include ../partial/sideNav.ejs %>
+        <section id="content">
+            <div id="header">
+                <div class="nav">
+                    <div class="profile">
+                        <img style="border-radius: 50%;" src=<%=userProfile %> height="30px" width="30px" style
+                        referrerpolicy="no-referrer" />
+                    </div>
+                </div>
+                </li>
+                </ul>
+            </div>
+            <div class="content" style="overflow-y: scroll;">
+                <div class="content-header">
+                    <p class="welcome">Welome <strong>
+                            <%=user%>
+                        </strong></p>
+                </div>
+                <h5 class="mentorname">
+                    Mentor: <%=mentor%>
+                </h5>
+                <br><br><br>
+                <center>
+                    <h3>LEAVE SUMMARY</h3>
+
+                </center>
+
+                <div class="container d-flex flex-gap-2 scroll"
+                    style="overflow-x:scroll;gap: 20px;scrollbar-width: none;" id="container">
+
+                </div>
+                <center>
+                    <h3>OD SUMMARY</h3>
+
+                </center>
+                <div class="container d-flex gap-2 scroll" style="overflow-x:scroll;gap: 20px;scrollbar-width: none;"
+                    id="container-od">
+
+                </div>
+
+
+                <script>
+                    const slider = Array.from(document.querySelectorAll('.scroll'))
+
+                    slider.map(slider => {
+                        let isDown = false;
+                        let startX;
+                        let scrollLeft;
+                        slider.addEventListener('mousedown', (e) => {
+                            isDown = true;
+                            slider.classList.add('active');
+                            startX = e.pageX - slider.offsetLeft;
+                            scrollLeft = slider.scrollLeft;
+                        });
+                        slider.addEventListener('mouseleave', () => {
+                            isDown = false;
+                            slider.classList.remove('active');
+                        });
+                        slider.addEventListener('mouseup', () => {
+                            isDown = false;
+                            slider.classList.remove('active');
+                        });
+                        slider.addEventListener('mousemove', (e) => {
+                            if (!isDown) return;
+                            e.preventDefault();
+                            const x = e.pageX - slider.offsetLeft;
+                            const walk = (x - startX) * 3; //scroll-fast
+                            slider.scrollLeft = scrollLeft - walk;
+                            console.log(walk);
+                        });
+                    })
+
+                </script>
+            </div>
+
+        </section>
+        <script src="/student-home.js"></script>
+</body>
+
+</html>

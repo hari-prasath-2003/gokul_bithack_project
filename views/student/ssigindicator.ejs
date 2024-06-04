@@ -1,0 +1,121 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/style.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <% include ../partial/sideNav.ejs %>
+        <section id="content" style="overflow-x: hidden;">
+            <div id="header">
+                <div class="nav">
+                    <div class="profile">
+                        <img style="border-radius: 50%;" src=<%=profile%> height="30px" width="30px"><i
+                            class="fa fa-caret-down"></i>
+                    </div>
+                </div>
+                </li>
+                </ul>
+            </div>
+
+            </div>
+            <div class="content">
+                <div class="content-header">
+                    <p class="welcome">Welome <strong>
+                            <%=user%>
+                        </strong></p>
+                </div>
+
+                <br>
+                <div class="d-flex w-100 mx-4">
+                    <h4 style="font-weight: bold;">Indicator :&nbsp;</h4>
+                    <h4>
+                        <%=indicator%>
+
+                    </h4>
+                </div>
+
+                <div class="row" style="overflow-y: auto;
+            max-height: 100%;gap:30px;padding: 50px;">
+                    <div class="col-md-2">
+                        <div class="card" style="width: 230px;height: 230px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Technical Competition(1)</h5>
+                                <h1 class="card-text">
+                                    <%=competition%>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card" style="width: 230px;height: 230px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Paper Presentation(2)</h5>
+                                <h1 class="card-text">
+                                    <%=paper%>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card" style="width: 230px;height: 230px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Project Competition (2)</h5>
+                                <h1 class="card-text">
+                                    <%=project%>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card" style="width: 230px;height: 230px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Product Development (1)</h5>
+                                <h1 class="card-text">
+                                    <%=product%>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card" style="width: 230px;height: 230px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Patent(1)</h5>
+                                <h1 class="card-text">
+                                    <%=patent%>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card" style="width: 230px;height: 230px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Internship (2) - Total Duration 14 Days</h5>
+                                <h1 class="card-text">
+                                    <%=internship%>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card" style="width: 230px;height: 230px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Online Course (2)</h5>
+                                <h1 class="card-text">
+                                    <%=onlineCourse%>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+</body>
+
+</html>

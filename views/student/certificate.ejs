@@ -1,0 +1,114 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/style.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <% include ../partial/sideNav.ejs %>
+        <section id="content">
+            <div id="header">
+                <div class="nav">
+                    <div class="profile">
+                        <img style="border-radius: 50%;" src=<%=profile%> height="30px" width="30px">
+                    </div>
+                </div>
+                </li>
+                </ul>
+            </div>
+            </div>
+            <div class="content">
+                <div class="content-header">
+                    <p class="welcome">Welome <strong>
+                            <%=user%>
+                        </strong></p>
+                </div>
+                <div class="flex-container">
+
+                    <div class="container">
+
+                        <h3 style="text-align: center;">Submit your Certificates</h3>
+                        <centre>
+                            <form>
+                                <div class="form-outline w-50">
+                                    <label for=" exampleFormControlInput1">On Duty Id</label>
+                                    <div class="row-xs-2">
+                                        <input class="form-control" type="text" placeholder="Od id" id="odid">
+                                    </div>
+                                </div><br>
+                                <div class="form-outline w-50">
+                                    <label for=" exampleFormControlSelect1">Event Type</label>
+                                    <div class="col-xs-2">
+                                        <select class="form-control" id="select">
+                                            <option>Technical-Competetion</option>
+                                            <option>Paper-Presentation</option>
+                                            <option>Project-Competetion</option>
+                                            <option>Internship</option>
+                                            <option>Patent</option>
+                                            <option>Product</option>
+                                            <option>Onilne-Course</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+
+                                <div class="form-outline w-50">
+                                    <label for=" exampleFormControlInput1">Event Details</label>
+                                    <input type="email" class="form-control" id="event_detail">
+                                </div><br>
+                                <label>Certificate*</label>
+                                <div class="form-outline w-50">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="file">
+                                        <label class="custom-file-label" id="file-label" for="customFile">Upload</label>
+                                    </div>
+                                </div><br>
+                                <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+
+                            </form>
+
+                    </div>
+
+        </section>
+        <script>
+            const submit = document.getElementById("submit")
+            const odid = document.getElementById("odid")
+            const select = document.getElementById("select")
+            const eventdetail = document.getElementById("event_detail")
+            let filename
+            const upload = document.getElementById("file")
+            const label = document.getElementById("file-label")
+            upload.onchange = async () => {
+                const file = upload.files[0]
+                label.innerText = file.name
+                filename = Math.random() + file.name
+                const fr = new FileReader();
+                fr.readAsArrayBuffer(file)
+                fr.onload = async (e) => {
+                    await fetch("/uploadfile", { method: "POST", headers: { "filename": filename }, body: e.target.result })
+                }
+            }
+            submit.addEventListener("click", (e) => {
+                e.preventDefault()
+                fetch("http://localhost:3000/certificate/apply", { headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": '*' }, method: "POST", body: JSON.stringify({ odid: odid.value, filename: filename, eventdetails: eventdetail.value, event: select.value }) }).then((res) => {
+                    if (res.status === 401) {
+                        window.location.href = "/auth/google"
+                    }
+                    if (res.status === 200) {
+                        alert("OD ADDED SUCCESSFULLY")
+                        window.location.href = "/profile"
+                    }
+                })
+            })
+        </script>
+
+</body>
+
+
+</html>
